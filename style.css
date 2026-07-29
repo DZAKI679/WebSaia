@@ -1,0 +1,63 @@
+body {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: 'Roboto', sans-serif;
+    padding-top: none;
+    background-color: rgb(161, 159, 159);
+}
+
+
+/*Awalan*/
+
+
+.judulName {
+    background-color: rgba(122, 122, 122, 0.5);
+    color: black;
+    align-content: center;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: 1px 7px 2px rgba(39, 38, 38, 0.05);
+}
+
+
+/*buttonField*/
+
+.buttonField {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding-top: 10%;
+    text-align: center;
+}
+
+.button {
+    background-color: rgba(78, 69, 69, 0.5);
+    padding: 10%;
+    margin: 5%;
+    box-shadow: 1px 7px 2px rgba(39, 38, 38, 0.05);
+    border-radius: 30px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    /*Awalan - Phone Ver. */
+
+    .judulName {
+        
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+
+    /*ButtonField - Phone Ver. */
+
+    .buttonField {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+    
