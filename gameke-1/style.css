@@ -17,3 +17,12 @@ canvas {
     display: block;
     margin: 20px auto;
 }
+
+
+
+.buttonArrow {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
