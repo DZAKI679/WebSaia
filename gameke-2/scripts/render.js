@@ -1,19 +1,22 @@
+// ======================================
+// Draw Player
+// ======================================
+
 function drawPlayer() {
 
-    const sprite =
-        player.state === State.IDLE
-            ? idle
-            : walk;
+    if (assetsLoaded < totalAssets) return;
+
+    const current = SpriteSheet[player.state];
 
     ctx.drawImage(
 
-        sprite,
+        current.image,
 
-        player.frame * TILE_SIZE,
-        player.direction * TILE_SIZE,
+        player.frame * current.frameWidth,
+        player.direction * current.frameHeight,
 
-        TILE_SIZE,
-        TILE_SIZE,
+        current.frameWidth,
+        current.frameHeight,
 
         player.x,
         player.y,
@@ -24,13 +27,44 @@ function drawPlayer() {
     );
 
 }
+// ======================================
+// Debug
+// ======================================
+
+function drawDebug() {
+
+    if (!Debug.enabled) return;
+
+    if (Debug.hitbox) {
+
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+
+        ctx.strokeRect(
+
+            player.x + player.hitbox.offsetX,
+            player.y + player.hitbox.offsetY,
+
+            player.hitbox.width,
+            player.hitbox.height
+
+        );
+
+    }
+
+}
+// ======================================
+// Draw
+// ======================================
 
 function draw() {
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     drawMap();
 
     drawPlayer();
+
+    drawDebug();
 
 }

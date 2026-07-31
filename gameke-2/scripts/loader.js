@@ -1,22 +1,37 @@
-const idle = new Image();
-idle.src = "assets/player/idle.png";
+// ======================================
+// Assets
+// ======================================
 
-const walk = new Image();
-walk.src = "assets/player/walk.png";
+const Assets = {
 
-let loaded = 0;
+    idle: new Image(),
+    walk: new Image()
 
-function assetLoaded() {
+};
 
-    loaded++;
+let assetsLoaded = 0;
+const totalAssets = 2;
 
-    if (loaded === 2) {
+// ======================================
+// Load Assets
+// ======================================
 
-        gameLoop();
+function loadAssets() {
 
-    }
+    Assets.idle.src = "assets/player/idle.png";
+    Assets.walk.src = "assets/player/walk.png";
+
+    Assets.idle.onload = assetLoaded;
+    Assets.walk.onload = assetLoaded;
 
 }
 
-idle.onload = assetLoaded;
-walk.onload = assetLoaded;
+// ======================================
+// Asset Loaded
+// ======================================
+
+function assetLoaded() {
+
+    assetsLoaded++;
+
+}
