@@ -4,22 +4,39 @@
 
 const world = {
 
-    rows: 7,
-    cols: 12,
+    rows: 20,
+    cols: 20,
 
-    data: [
-
-        [1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1]
-
-    ]
+    data: []
 
 };
+
+// Generate Map
+for (let row = 0; row < world.rows; row++) {
+
+    world.data[row] = [];
+
+    for (let col = 0; col < world.cols; col++) {
+
+        // Pinggir = Wall
+        if (
+            row === 0 ||
+            row === world.rows - 1 ||
+            col === 0 ||
+            col === world.cols - 1
+        ) {
+
+            world.data[row][col] = 1;
+
+        } else {
+
+            world.data[row][col] = 0;
+
+        }
+
+    }
+
+}
 
 // ======================================
 // Draw Map
@@ -43,8 +60,8 @@ function drawMap() {
 
             ctx.fillRect(
 
-                col * TILE_SIZE,
-                row * TILE_SIZE,
+                col * TILE_SIZE - camera.x,
+                row * TILE_SIZE - camera.y,
 
                 TILE_SIZE,
                 TILE_SIZE

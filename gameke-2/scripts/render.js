@@ -18,8 +18,8 @@ function drawPlayer() {
         current.frameWidth,
         current.frameHeight,
 
-        player.x,
-        player.y,
+        player.x - camera.x,
+        player.y - camera.y,
 
         player.width,
         player.height

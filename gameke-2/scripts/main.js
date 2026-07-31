@@ -5,6 +5,7 @@
 function update() {
 
     updatePlayer();
+    updateCamera();
 
 }
 
