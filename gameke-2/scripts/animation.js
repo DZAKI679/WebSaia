@@ -13,7 +13,7 @@ function updatePlayer() {
     let nextX = player.x;
     let nextY = player.y;
 
-    if (keys["ArrowDown"]) {
+    if (Input.down) {
 
         nextY += player.speed;
         player.direction = 0;
@@ -21,7 +21,7 @@ function updatePlayer() {
 
     }
 
-    if (keys["ArrowLeft"]) {
+    if (Input.left) {
 
         nextX -= player.speed;
         player.direction = 1;
@@ -29,7 +29,7 @@ function updatePlayer() {
 
     }
 
-    if (keys["ArrowRight"]) {
+    if (Input.right) {
 
         nextX += player.speed;
         player.direction = 2;
@@ -37,7 +37,7 @@ function updatePlayer() {
 
     }
 
-    if (keys["ArrowUp"]) {
+    if (Input.up) {
 
         nextY -= player.speed;
         player.direction = 3;

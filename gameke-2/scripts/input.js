@@ -2,7 +2,17 @@
 // Input
 // ======================================
 
-const keys = {};
+const Input = {
+
+    up: false,
+    down: false,
+    left: false,
+    right: false,
+
+    run: false,
+    interact: false
+
+};
 
 // ======================================
 // Keyboard
@@ -10,21 +20,85 @@ const keys = {};
 
 document.addEventListener("keydown", (e) => {
 
-    keys[e.key] = true;
+    switch (e.key) {
+
+        case "ArrowUp":
+        case "w":
+        case "W":
+            Input.up = true;
+            break;
+
+        case "ArrowDown":
+        case "s":
+        case "S":
+            Input.down = true;
+            break;
+
+        case "ArrowLeft":
+        case "a":
+        case "A":
+            Input.left = true;
+            break;
+
+        case "ArrowRight":
+        case "d":
+        case "D":
+            Input.right = true;
+            break;
+
+        case "Shift":
+            Input.run = true;
+            break;
+
+        case "e":
+        case "E":
+            Input.interact = true;
+            break;
+
+        case "F3":
+            Debug.enabled = !Debug.enabled;
+            break;
+
+    }
 
 });
 
 document.addEventListener("keyup", (e) => {
 
-    keys[e.key] = false;
+    switch (e.key) {
 
-});
+        case "ArrowUp":
+        case "w":
+        case "W":
+            Input.up = false;
+            break;
 
-document.addEventListener("keydown", (e) => {
+        case "ArrowDown":
+        case "s":
+        case "S":
+            Input.down = false;
+            break;
 
-    if (e.key === "F3") {
+        case "ArrowLeft":
+        case "a":
+        case "A":
+            Input.left = false;
+            break;
 
-        Debug.enabled = !Debug.enabled;
+        case "ArrowRight":
+        case "d":
+        case "D":
+            Input.right = false;
+            break;
+
+        case "Shift":
+            Input.run = false;
+            break;
+
+        case "e":
+        case "E":
+            Input.interact = false;
+            break;
 
     }
 
@@ -34,19 +108,19 @@ document.addEventListener("keydown", (e) => {
 // Touch Button
 // ======================================
 
-function touchButton(button, key) {
+function touchButton(button, direction) {
 
     function start(e) {
 
         e.preventDefault();
-        keys[key] = true;
+        Input[direction] = true;
 
     }
 
     function stop(e) {
 
         e.preventDefault();
-        keys[key] = false;
+        Input[direction] = false;
 
     }
 
@@ -66,7 +140,7 @@ function touchButton(button, key) {
 // Register Button
 // ======================================
 
-touchButton(document.getElementById("up"), "ArrowUp");
-touchButton(document.getElementById("down"), "ArrowDown");
-touchButton(document.getElementById("left"), "ArrowLeft");
-touchButton(document.getElementById("right"), "ArrowRight");
+touchButton(document.getElementById("up"), "up");
+touchButton(document.getElementById("down"), "down");
+touchButton(document.getElementById("left"), "left");
+touchButton(document.getElementById("right"), "right");
