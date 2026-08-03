@@ -10,3 +10,4 @@ const ctx = canvas.getContext("2d");
 // ======================================
 
 const TILE_SIZE = 64;
+const TILESET_SIZE = 32;
