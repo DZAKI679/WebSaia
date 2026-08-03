@@ -18,17 +18,30 @@ for (let row = 0; row < world.rows; row++) {
 
     for (let col = 0; col < world.cols; col++) {
 
-        // Pinggir = Wall
+        // Wall Atas (kecuali pojok kiri & kanan)
         if (
-            row === 0 ||
+            row === 0 &&
+            col > 0 &&
+            col < world.cols - 1
+        ) {
+
+            world.data[row][col] = Tiles.WALL_TOP;
+
+        }
+
+        // Wall Kiri, Kanan, dan Bawah
+        else if (
             row === world.rows - 1 ||
             col === 0 ||
             col === world.cols - 1
         ) {
 
-            world.data[row][col] = Tiles.WALL;
+            world.data[row][col] = Tiles.WALL_SIDE;
 
-        } else {
+        }
+
+        // Floor
+        else {
 
             world.data[row][col] = Tiles.FLOOR_WOOD_1;
 
@@ -44,40 +57,19 @@ for (let row = 0; row < world.rows; row++) {
 
 function drawTile(tileID, col, row) {
 
-    let sx = 0;
-    let sy = 0;
+    // Jangan gambar WALL_SIDE
+    if (tileID === Tiles.WALL_SIDE) return;
 
-    switch (tileID) {
+    const tile = TileMap[tileID];
 
-        case Tiles.FLOOR_WOOD_1:
-            sx = 64;
-            sy = 0;
-            break;
-
-        case Tiles.WALL:
-
-            ctx.fillStyle = "#4d4d4d";
-
-            ctx.fillRect(
-
-                col * TILE_SIZE - camera.x,
-                row * TILE_SIZE - camera.y,
-
-                TILE_SIZE,
-                TILE_SIZE
-
-            );
-
-            return;
-
-    }
+    if (!tile) return;
 
     ctx.drawImage(
 
         Assets.tileset,
 
-        sx,
-        sy,
+        tile.x * TILESET_SIZE,
+        tile.y * TILESET_SIZE,
 
         TILESET_SIZE,
         TILESET_SIZE,
@@ -91,7 +83,6 @@ function drawTile(tileID, col, row) {
     );
 
 }
-
 // ======================================
 // Draw Map
 // ======================================
@@ -140,10 +131,17 @@ function isColliding(x, y) {
 
     return (
 
-        world.data[top][left] === Tiles.WALL ||
-        world.data[top][right] === Tiles.WALL ||
-        world.data[bottom][left] === Tiles.WALL ||
-        world.data[bottom][right] === Tiles.WALL
+        world.data[top][left] === Tiles.WALL_TOP ||
+        world.data[top][left] === Tiles.WALL_SIDE ||
+
+        world.data[top][right] === Tiles.WALL_TOP ||
+        world.data[top][right] === Tiles.WALL_SIDE ||
+
+        world.data[bottom][left] === Tiles.WALL_TOP ||
+        world.data[bottom][left] === Tiles.WALL_SIDE ||
+
+        world.data[bottom][right] === Tiles.WALL_TOP ||
+        world.data[bottom][right] === Tiles.WALL_SIDE
 
     );
 

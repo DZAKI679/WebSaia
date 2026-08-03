@@ -9,8 +9,8 @@ const player = {
     y: (canvas.height - TILE_SIZE) / 2,
 
     // Size
-    width: TILE_SIZE,
-    height: TILE_SIZE,
+    width: 96,
+    height: 96,
 
     // Movement
     speed: 2,
@@ -35,11 +35,11 @@ const player = {
 
     hitbox: {
 
-        offsetX: 20,
-        offsetY: 20,
+        width: 24,
+        height: 40,
 
-        width: 22,
-        height: 25
+        offsetX: 35,
+        offsetY: 30
 
     }
 

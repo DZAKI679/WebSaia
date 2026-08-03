@@ -41,13 +41,10 @@ function drawDebug() {
         ctx.lineWidth = 2;
 
         ctx.strokeRect(
-
-            player.x + player.hitbox.offsetX,
-            player.y + player.hitbox.offsetY,
-
+            player.x + player.hitbox.offsetX - camera.x,
+            player.y + player.hitbox.offsetY - camera.y,
             player.hitbox.width,
             player.hitbox.height
-
         );
 
     }
