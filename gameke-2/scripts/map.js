@@ -4,8 +4,8 @@
 
 const world = {
 
-    rows: 20,
-    cols: 20,
+    rows: 10,
+    cols: 13,
 
     data: []
 
@@ -51,13 +51,15 @@ for (let row = 0; row < world.rows; row++) {
 
 }
 
+// Tempatkan semua object
+
+
 // ======================================
 // Draw Tile
 // ======================================
 
 function drawTile(tileID, col, row) {
 
-    // Jangan gambar WALL_SIDE
     if (tileID === Tiles.WALL_SIDE) return;
 
     const tile = TileMap[tileID];
@@ -83,6 +85,32 @@ function drawTile(tileID, col, row) {
     );
 
 }
+
+// ======================================
+// Cari Replace Object
+// ======================================
+
+function getReplaceObject(row, col) {
+
+    for (const object of ReplaceObjects) {
+
+        if (
+
+            object.row === row &&
+            object.col === col
+
+        ) {
+
+            return object;
+
+        }
+
+    }
+
+    return null;
+
+}
+
 // ======================================
 // Draw Map
 // ======================================
@@ -93,14 +121,29 @@ function drawMap() {
 
         for (let col = 0; col < world.cols; col++) {
 
-            drawTile(
+            // Cari apakah ada Replace Object
+            const replace = getReplaceObject(row, col);
 
-                world.data[row][col],
+            // Kalau ADA Replace Object
+            if (replace) {
 
-                col,
-                row
+                drawObject(replace);
 
-            );
+            }
+
+            // Kalau TIDAK ADA
+            else {
+
+                drawTile(
+
+                    world.data[row][col],
+
+                    col,
+                    row
+
+                );
+
+            }
 
         }
 
@@ -146,3 +189,4 @@ function isColliding(x, y) {
     );
 
 }
+

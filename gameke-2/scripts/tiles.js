@@ -11,7 +11,8 @@ const Tiles = {
     WALL_TOP: 10,
     WALL_SIDE: 11,
 
-    DOOR: 20,
+    DOOR_CLOSED: 20,
+    DOOR_OPEN: 21,
 
     EMPTY: 99
 

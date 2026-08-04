@@ -13,7 +13,7 @@ const player = {
     height: 96,
 
     // Movement
-    speed: 2,
+    speed: 3,
 
     // Animation
     state: "idle",
@@ -36,10 +36,10 @@ const player = {
     hitbox: {
 
         width: 24,
-        height: 40,
+        height: 10,
 
         offsetX: 35,
-        offsetY: 30
+        offsetY: 60
 
     }
 

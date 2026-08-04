@@ -58,7 +58,9 @@ function draw() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    drawMap();
+    drawMap();             // Ground + Replace Object
+
+    drawOverlayObjects();  // Door, Chair, NPC
 
     drawPlayer();
 

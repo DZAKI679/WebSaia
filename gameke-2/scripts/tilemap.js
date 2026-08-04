@@ -23,6 +23,20 @@ const TileMap = {
         x: 1,
         y: 0
 
-    }
+    },
+    [Tiles.DOOR_CLOSED]: {
+
+        x: 0,
+        y: 2
+
+    },
+
+    [Tiles.DOOR_OPEN]: {
+
+        x: 1,
+        y: 2
+
+    },
+    
 
 };
